@@ -5,6 +5,13 @@ const subtract = (a, b) => a - b;
 
 const multiply = (a, b) => a * b;
 
+const symbols = {
+    "add": "+",
+    "subtract": "-",
+    "multiply": "x",
+    "divide": "÷"
+}
+
 const divide = (a, b) => {
     if (b === 0) {
         return undefined;
@@ -34,15 +41,13 @@ const operate = (op, a, b) => {
 const addNumberEvents = () => {
     const numberButtons = document.querySelectorAll(".number");
     for (const number of numberButtons) {
-        number.addEventListener("click", (e) => {
-            handleNumberClick(e);
-            updateDisplay();
-        });
+        number.addEventListener("click", handleNumberClick);
     }
 }
 
 const handleNumberClick = (e) => {
     storeNumber(e.target.textContent);
+    updateDisplay();
 }
 
 const storeNumber = (number) => {
@@ -72,4 +77,20 @@ const scrollDisplay = () => {
     }
 }
 
+const addOperatorEvents = () => {
+    const operatorButtons = document.querySelectorAll(".operator");
+    for (const button of operatorButtons) {
+        button.addEventListener("click", handleOperatorClick);
+    }
+}
+
+const handleOperatorClick = (e) => {
+    if (!firstOperand) {
+        return;
+    }
+    operator = e.target.id;
+    updateDisplay(symbols[operator]);
+}
+
 addNumberEvents();
+addOperatorEvents();

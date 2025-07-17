@@ -39,7 +39,7 @@ button.dark {
     background-color: #242529;
 }
 
-button.dark:active {
+button.dark:active:not(:disabled) {
     background-color: #69676a;
 }
 
@@ -47,7 +47,7 @@ button.orange {
     background-color: #fc9500;
 }
 
-button.orange:active {
+button.orange:active:not(:disabled) {
     background-color: #ffc084;
 }
 
@@ -61,11 +61,9 @@ button.gray {
     color: black;
 }
 
-button.gray:active {
+button.gray:active:not(:disabled) {
     background-color: #848284;
 }
-
-
 
 .display {
     color: #fefefe;

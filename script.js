@@ -92,5 +92,34 @@ const handleOperatorClick = (e) => {
     updateDisplay(symbols[operator]);
 }
 
+const addEqualsEvent = () => {
+    const equalsButton = document.querySelector("#equals");
+    equalsButton.addEventListener("click", handleEqualsClick);
+}
+
+const handleEqualsClick = (e) => {
+    if (!secondOperand) {
+        return;
+    }
+    const firsValue = Number(firstOperand);
+    const secondValue = Number(secondOperand);
+    const result = operate(operator, firsValue, secondValue);
+    if (Number.isNaN(result)) {
+        updateDisplay("Invalid Operation");
+        reset();
+    } else {
+        reset();
+        firstOperand = String(result);
+        updateDisplay();
+    }
+}
+
+const reset = () => {
+    firstOperand = "";
+    secondOperand = "";
+    operator = "";
+}
+
 addNumberEvents();
 addOperatorEvents();
+addEqualsEvent();

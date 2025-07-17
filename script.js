@@ -30,3 +30,38 @@ const operate = (op, a, b) => {
             return undefined;
     }
 }
+
+const addNumberEvents = () => {
+    const numberButtons = document.querySelectorAll(".number");
+    for (const number of numberButtons) {
+        number.addEventListener("click", (e) => {
+            handleNumberClick(e);
+            updateDisplay();
+        });
+    }
+}
+
+const handleNumberClick = (e) => {
+    storeNumber(e.target.textContent);
+}
+
+const storeNumber = (number) => {
+    if (!operator) {
+        firstOperand += number;
+    } else {
+        secondOperand += number;
+    }
+}
+
+const updateDisplay = (value) => {
+    const display = document.querySelector(".result");
+    if (value) {
+        display.textContent = value;
+    } else if (!operator) {
+        display.textContent = firstOperand;
+    } else {
+        display.textContent = secondOperand;
+    }
+}
+
+addNumberEvents();

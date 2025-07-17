@@ -29,12 +29,26 @@ button {
     border: 3px solid #242529;
 }
 
+button:not(:active) {
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
 button.dark {
     background-color: #242529;
 }
 
+button.dark:active {
+    background-color: #69676a;
+}
+
 button.orange {
     background-color: #fc9500;
+}
+
+button.orange:active {
+    background-color: #ffc084;
 }
 
 button.orange,
@@ -46,6 +60,12 @@ button.gray {
     background-color: #aaaaaa;
     color: black;
 }
+
+button.gray:active {
+    background-color: #848284;
+}
+
+
 
 .display {
     color: #fefefe;

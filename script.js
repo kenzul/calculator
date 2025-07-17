@@ -62,6 +62,14 @@ const updateDisplay = (value) => {
     } else {
         display.textContent = secondOperand;
     }
+    scrollDisplay();
+}
+
+const scrollDisplay = () => {
+    const display = document.querySelector(".result");
+    if (display.scrollWidth > display.clientWidth) {
+        display.scrollLeft = display.scrollWidth;
+    }
 }
 
 addNumberEvents();
